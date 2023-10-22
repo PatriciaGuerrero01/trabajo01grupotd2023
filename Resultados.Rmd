@@ -187,5 +187,3 @@ criterio.Todos(td, 0.5, T)
 
 ```
 Por tanto será Reggaeton
- Con estos resultados se recomienda a Nico utilizar su coche Propio.
-
