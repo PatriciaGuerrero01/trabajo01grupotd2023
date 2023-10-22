@@ -161,8 +161,6 @@ En general, cuando tratamos esta matriz como una tabla de costos, la mejor alter
 
 ## ACTIVIDAD 2
 
-**Elección de un Transporte para el Trabajo**
-
 **Elección de una canción**
 
 Un cantante esta pensando en sacar un nuevo álbum y no por qué género decidirse. Por ende esta teniendo en cuenta 3 variables; la puntuación que le dará el público general, su público mas fiel y su discográfica.
