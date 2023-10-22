@@ -1,0 +1,35 @@
+---
+title: "Enunciados"
+author: "Roberto González Lozano"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+## ACTIVIDAD 1
+Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores viene dada e la tabla siguiente.  
+Considerar beneficios (favorable) y costos (desfavorable)  
+
+```{r echo=FALSE}
+source("teoriadecision_funciones_incertidumbre.R")
+m1A <- crea.tablaX(c(5,6,8,
+                     -1,2,4,
+                     5,4,-2,
+                     -3,5,1),
+                   numalternativas = 4, numestados = 3)
+m1A
+```
+
+## ACTIVIDAD 2
+
+**Elección de una canción**
+
+Un cantante esta pensando en sacar un nuevo álbum y no por qué género decidirse. Por ende esta teniendo en cuenta 3 variables; la puntuación que le dará el público general, su público mas fiel y su discográfica.
+
+1. **Sacar un álbum de pop:** El artista piensa que sacar este álbum generaría una puntuación de 8 para el público general, un 5 para el público fiel y sin embargo la discográfica piensa que es una buena idea, por tanto le puntúa con un 9.5
+2. **Sacar un álbum de electrónica:** El artista sabe que sacar un albúm de género electrónico generaría una puntuación de 7 para el público general, 9.5 para su público fiel y 4 para la discográfica 
+
+3. **Sacar un álbum de reggaetón:** Por último, un albúm de reggeaton es recibido con un 9 para el público general, 6 para el público fiel y 6 también por la discográfica
+
+
+¿Cuál sería el álbum más conveniente para el artista en términos de audiencia? Representa las ecuaciones de alternativas para cada opción.
+
