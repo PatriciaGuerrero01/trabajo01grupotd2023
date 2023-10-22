@@ -41,4 +41,4 @@ X
 #año llueve bastante y hace viento, la producción de aceite es la misma que en el caso anterior pero el precio 
 #de venta aumenta a 1,50€ el litro. Por el contrario, si durante el año no llueve, la producción de aceite disminuye 
 #a por cada 3 kilos de aceitunas se hace un litro de aceite y el precio de venta de un litro de aceite aumenta hasta 2,50€.
-Por otra parte si se alquila se hace por 150000€ y la empresa produce y gana el 10% de la producción anual.
+#Por otra parte si se alquila se hace por 150000€ y la empresa produce y gana el 10% de la producción anual.
