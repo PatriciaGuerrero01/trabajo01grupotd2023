@@ -185,3 +185,195 @@ tabla2
 res2 = criterio.Todos(tabla2, 0.4, favorable = T)
 res2
 cat("Todos los criterios han elegido que la almazara produzca el aceite.")
+
+## PROBLEMA 5
+Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores viene dada e la tabla siguiente.  
+Considerar beneficios (favorable) y costos (desfavorable)  
+
+```{r echo=FALSE}
+source("teoriadecision_funciones_incertidumbre.R")
+m1A <- crea.tablaX(c(7,5,1,
+                     -3,1,3,
+                     5,-1,3,
+                     5,4,-10),
+                   numalternativas = 4, numestados = 3)
+m1A
+```
+
+Vamos a resolver el apartado usando las funciones creadas de cada criterio.  
+
+### TABLA DE BENEFICIOS  
+
+
+#### Método de Wald
+
+```{r}
+sol1a_W <- criterio.Wald(m1A, favorable = T) #ponemos T prorque estamos trabajando con una tabla de beneficios
+sol1a_W
+```
+La mejor alternativa según el criterio de Wald es la "d1" siendo el valor óptimo el 1.  
+
+#### Criterio Optimista
+
+```{r}
+sol1a_O <- criterio.Optimista(m1A,T)
+sol1a_O
+```
+La mejor alternativa según el criterio Optimista es la "d1" siendo el valor optimo el 7.  
+
+#### Criterio Hurwicz
+```{r}
+sol1a_H <- criterio.Hurwicz(m1A, favorable = T)
+sol1a_H 
+
+```
+
+La mejor alternativa según el criterio Hurwicz es la "d1" siendo el valor optimo el 2.8.
+
+```{r}
+dibuja.criterio.Hurwicz(m1A)
+dibuja.criterio.Hurwicz_Intervalos(m1A,T,T)
+```
+#### Criterio Savage
+```{r}
+
+sol1a_S <- criterio.Savage(m1A,T)
+sol1a_S
+```
+
+La mejor alternativa según el criterio Savage es la "d1" siendod el valor optimo el 2.
+
+#### Criterio LaPlace
+```{r}
+
+sol1a_LP <- criterio.Laplace(m1A,T)
+sol1a_LP
+``` 
+
+
+La mejor alternativa según el criterio LaPlace es la "d1" siendo el valor optimo el 4.33333.
+
+#### Criterio Punto ideal
+
+```{r}
+
+sol1a_PI <- criterio.PuntoIdeal(m1A,T)
+sol1a_PI
+```
+
+La mejor alternativa según el criterio Punto ideal es la "d1" siendo el valor optimo el 2
+
+#### En resumen:
+```{r}
+sol1a_T <- criterio.Todos(m1A,alfa = 0.5,T)
+sol1a_T
+```
+En general, cuando tratamos esta matriz como una tabla de beneficios, la mejor alternativa es la "d1"
+
+## TABLA DE COSTOS
+
+#### Método de Wald
+```{r}
+sol1b_W <- criterio.Wald(m1A, favorable = F) 
+sol1b_W
+``` 
+
+La mejor alternativa según el criterio de Wald es la "d2" siendo el valor óptimo el 3.
+
+#### Criterio Optimista
+```{r}
+
+sol1b_O <- criterio.Optimista(m1A,F)
+sol1b_O
+```
+
+
+La mejor alternativa según el criterio Optimista es la "d4" siendo el valor optimo el -10.
+
+#### Criterio Hurwicz
+```{r}
+sol1b_H <- criterio.Hurwicz(m1A, favorable = T)
+sol1b_H 
+```
+
+La mejor alternativa según el criterio Hurwicz es la "d1" siendo el valor optimo el 2.8.
+```{r}
+
+dibuja.criterio.Hurwicz(m1A)
+```
+
+#### Criterio Savage
+```{r}
+
+sol1b_S <- criterio.Savage(m1A,F)
+sol1b_S
+```
+
+La mejor alternativa según el criterio Savage es la "d4" siendod el valor optimo el 8.
+
+#### Criterio LaPlace
+```{r}
+sol1b_LP <- criterio.Laplace(m1A,F)
+sol1b_LP
+```
+
+La mejor alternativa según el criterio LaPlace es la "d4" siendo el valor optimo el -0.33.
+
+#### Criterio Punto ideal
+```{r}
+
+sol1b_PI <- criterio.PuntoIdeal(m1A,F)
+sol1b_PI
+```
+La mejor alternativa según el criterio Punto ideal es la "d4" siendo el valor optimo el 9.433981
+
+#### En resumen:
+```{r}
+sol1b_T <- criterio.Todos(m1A,alfa = 0.5,F)
+sol1b_T
+
+```
+
+En general, cuando tratamos esta matriz como una tabla de costos, la mejor alternativa es la "d4".
+
+## PROBLEMA 6
+
+**Elección de un Transporte para el Trabajo**
+
+Nico está considerando sus opciones de transporte para ir al trabajo. Tiene tres alternativas:
+
+1. **Conducir su propio automóvil:** Nico puede conducir su automóvil al trabajo. El costo mensual de gasolina y estacionamiento es de 200 euros. Nico tiene un colega que trabaja cerca de su trabajo, con el que puede compartir el gasto de la gasolina a medias si coinciden en horario
+
+2. **Tomar el transporte público:** Nico puede optar por usar el transporte público para ir al trabajo. El costo mensual del pase de transporte público es de 80. Sin embargo, si su colega opta por ir con Nico en transporte público pueden sacar un bono con un 15% de descuento para ambos.
+
+3. **Blablacar:** Nico puede por irse al trabajo en blablacar costandole el transporte 160 euros mensuales,si su colega se apunta con Nico al anunciante de blablacar el transporte le costaria un 30% menos solo para Nico.
+
+Nico tiene dos estados de la naturaleza para considerar:
+
+**Estado de la Naturaleza 1: Disponibilidad del Colega:** En este estado, su colega está disponible para compartir el viaje.
+
+**Estado de la Naturaleza 2: Indisponibilidad del Colega:** En este estado, su colega no puede compartir el viaje.
+
+¿Cuál es la opción más conveniente para Nico en términos de costo total durante el primer año? Representa las ecuaciones de alternativas para cada opción de transporte y estado de la naturaleza
+
+```{r}
+
+
+m11 <- 200/2*12
+m12 <- 200*12
+m21 <- (80-80*0.15)*12
+m22 <- 80*12
+m31 <- (160-160*0.3)*12
+m32 <- 160*12
+tb <- crea.tablaX(c(m11,m12,
+                      m21,m22,
+                      m31,m32),  numalternativas=3,numestados=2)
+
+
+rownames(tb) <- c("Coche Propio", "Bus", "Blablacar")
+colnames(tb) <- c("Disponibilidad del Colega", "Indisponibilidad del Colega")
+
+criterio.Todos(tb, 0.5, T)
+
+```
+ Con estos resultados se recomienda a Nico utilizar su coche Propio.
